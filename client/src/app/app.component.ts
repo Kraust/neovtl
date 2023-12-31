@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+import { attach } from 'kraust-neovim';
 
 @Component({
   selector: 'app-root',
@@ -31,6 +32,9 @@ export class AppComponent {
   }
 
   connectToServer(serverAddr: string): void {
-    console.log(serverAddr);
+
+    console.log("Trying to attach to " + serverAddr);
+    const nvim = attach({ socket: serverAddr });
+    console.log(nvim);
   }
 }
